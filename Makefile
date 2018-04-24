@@ -1,4 +1,11 @@
+ifneq ($(shell uname -s), Linux)
+$(info "Only Linux is targeted !!!")
+all:
+	@echo -n
+else
 all: test test_wrapper
+#	@echo -n
+endif
 
 test: test.o local_shared_lib.so
 	$(CC) test.o local_shared_lib.so -o test -ldl
